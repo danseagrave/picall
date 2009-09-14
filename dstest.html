@@ -1,0 +1,11 @@
+{% include "header.html" %}
+
+<h3>Messages</h3>
+<p>found {{ msgs.count }} messages</p>
+<ul>
+{% for msg in msgs %}
+  <li>{{ msg.content }} - {{ msg.date }}</li>
+{% endfor %}
+</ul>
+
+{% include "footer.html" %}

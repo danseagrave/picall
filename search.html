@@ -1,0 +1,35 @@
+{% include "header.html" %}
+    
+    <form action="search" method="get">
+        <label for="searchQuery">Search</label>: <input id="searchQuery" name="q" value="{{ query }}" />
+        <input type="submit" id="searchButton" name="searchButton" value="Search" />
+    </form>
+	<div id="searchResults">
+        <h3>Results For {{ searchType }} using {{ query }} </h3>
+        {% for tweet in tweets %}
+        <div id="{{ tweet.id }}" class="tweet"> 
+                <h5 class="user">{{ tweet.from_user }}</h5>
+                <div class="time">at {{ tweet.created_at }}</div>
+                <div class="text">{{ tweet.text|urlize }}</div>
+                {% for pic in tweet.pics %}
+                    <dt>{{pic.url}}</dt>
+                    <dd>TYPE: {{pic.picType}}</dd>
+                    <dd>ID: {{pic.picID}}</dd>
+                    <dd><a href="{{ pic.url }}"><img src="{{ pic.thumburl }}" title="{{ tweet.text }}" /></a></dd>
+                {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div id="techData">
+      <hr />
+      <h5>Tech Data</h5>
+      <dl>
+      {% for item in searchTechData %}
+        <dt>{{ item.name }}</dt>
+        <dd>{{ item.data }}</dd>
+      {% endfor %}}
+      </dl>
+    </div>
+
+{% include "footer.html" %}

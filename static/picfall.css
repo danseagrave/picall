@@ -1,0 +1,108 @@
+/*
+blue: #39c
+*/
+
+html
+{
+	margin: 0;
+	padding: 0;
+}
+
+body
+{
+	font-family: verdana, sans-serif;
+	padding: 0.3em;
+}
+
+hr
+{
+	width:100%;
+	border-top: 0.2em solid #000;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+	margin: 0.2 0;
+}
+
+ul.menu.horz
+{
+	list-style: none;
+	margin: 1em 0;
+}
+ul.menu.horz li
+{
+	float: left;
+	margin: 0;
+	padding: 0 0.5em;
+	border: 1px solid #999;
+	border-top: 0;
+	border-bottom: 0;
+	
+}
+
+.hidden
+{
+	display: none;
+}
+
+#header 
+{
+	position:relative;
+}
+#header h1
+{
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+#header ul.menu
+{
+	position: absolute;
+	top: 10px;
+	left: 210px;
+}
+
+#trends td
+{
+	padding: 0;
+}
+.trendContainer
+{
+	text-align: center;
+	border: 4px solid #99c;
+	background-color: #eef;
+}
+
+.trendContainer h4
+{
+	margin: 0;
+	margin-bottom: 0.2em;
+	padding: 0.2em;
+	color: #666;
+	background-color: #dde;
+}
+.trendContainer h4 img
+{
+	vertical-align: middle;
+}
+#trends .tweetData
+{
+	display:none;
+	text-align: left;
+}
+#trends .tweetData dt
+{
+	margin: 0.1em 0;
+}
+#trends .tweet
+{
+	margin: 0.5em 1em;
+	border: 0.5em solid #39c;
+	padding: 0.2em 0.5em;
+}
+#trends dt.tweetText
+{
+	border: 1px solid #ccc;
+	border-width: 1px 0;
+}

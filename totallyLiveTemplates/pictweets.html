@@ -1,0 +1,20 @@
+              <span class="pics" rel="{{ trend }}">
+                {% for tweet in tweets %}
+                  <div class="tweet">
+                    <span class="tweetPics" rel="{{ tweet.id }}">
+                    {% for pic in tweet.pics %}
+                      <img src="{{ pic.thumburl }}" rel="{{ pic.fullurl }}"/>
+                    {% endfor %}
+                    </span>
+                    <div class="tweetData">
+                      <dl>
+                        <dt class="tweetUser"><a href="http://twitter.com/{{ tweet.from_user }}">@{{ tweet.from_user }}</a></dt>
+                        <dt class="tweetText">
+                          {{ tweet.text|urlize }}
+                        </dt>
+                        <dt class="tweetTime">{{ tweet.created_at }}</dt>
+                      </dl>
+                    </div>
+                  </div>
+                {% endfor %}
+              </span>

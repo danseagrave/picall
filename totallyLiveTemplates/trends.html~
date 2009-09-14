@@ -1,0 +1,28 @@
+{% include "../header.html" %}
+
+	<div id="trends">
+        <h3>{{ time }} onwards...</h3>
+        <input type="button" id="startPicsButton" onClick="javascript:startPics(); return false;" value="Start" />
+        | <input type="button" id="pausePicsButton" onClick="javascript:pausePics(); return false;" value="Pause">
+        <table width="100%">
+          <tr>
+        {% for trend in trends %}
+            <td valign="top">
+              <div class="trendContainer" rel="{{ trend.name }}" id="trend-{{ trend.position }}">
+                <h4><a href="/totallylive/search?q={{trend.name|urlencode}}" class="trend">{{ trend.name }}</a> (<span class="picCount"></span>)</h4>
+                <div class="picContainer"></div>
+              </div>
+            </td>
+        {% endfor %}
+          </tr>
+        </table>
+    </div>
+
+
+<div id="techData">
+</div>
+<div id="tempPicHolder" class="hidden">
+</div>
+<script type="text/javascript" src="/static/picfall.js" />
+
+{% include "footer.html" %}
