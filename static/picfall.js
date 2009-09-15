@@ -5,6 +5,11 @@
   var picsPaused = false;
   var picsCheckEverySeconds = 30;
   var picsurl = "/totallylive/justpics";
+  
+  //used to store trends when they fall off the list
+  // just incase they get back on the list
+  var pastTrendTweets = [];
+  
 
  $(document).ready(function() {
    // do stuff when DOM is ready
@@ -17,8 +22,12 @@ function setupDHTML() {
   //add throbbers
   $("div.trendContainer h4").each(function(i) {
     addThrobber(this);
+    addRemoveButton(this);
   });
-  
+}
+
+function removeTrend(el) {
+//  $(el).
 }
 
 function updateTrendPics(url, checkAgainSeconds) {
@@ -116,6 +125,19 @@ function startPics() {
   updateTrendPics(picsurl, picsCheckEverySeconds * 1000);
 }
 
+function addRemoveButton(target, extraClasses) {
+  //add remove button
+  targetJQ = $(target);
+  targetJQ.append('<span class="removeTrend ' + extraClasses + '">[x]</span>');
+  //set click action
+  targetJQ.find(".removeTrend").click(function(el) { 
+    container =  $(this).parents("div.trendContainer");
+    pastTrendTweets[container.attr("rel")] = container;
+    container.remove();
+  });
+}
+
+
 function addThrobber(target, extraClasses) {
   $(target).append('<img class="throbber ' + extraClasses + '" src="/static/ajax-loader.gif" />');
 }
@@ -158,5 +180,6 @@ function swapSrcRel() {
     //swap
     img.attr("rel", img.attr("src"));
     img.attr("src", reltmp);
-    
 }
+
+
