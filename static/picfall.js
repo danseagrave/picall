@@ -1,15 +1,11 @@
 
-alert('test');
-
+  //(trends are defined in the main html so that they can be set by the template system)
 
   var picstimer;
   var picsPaused = false;
   var picsCheckEverySeconds = 30;
   var picsurl = "/totallylive/justpics";
-  
-  // setup initial trends
-  var trends = {{ trendsjson }};
-    
+
  $(document).ready(function() {
    // do stuff when DOM is ready
    setupDHTML();
