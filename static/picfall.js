@@ -1,4 +1,5 @@
 
+
   //(trends are defined in the main html so that they can be set by the template system)
 
   var picstimer;
@@ -132,8 +133,27 @@ function addRemoveButton(target, extraClasses) {
   //set click action
   targetJQ.find(".removeTrend").click(function(el) { 
     container =  $(this).parents("div.trendContainer");
-    pastTrendTweets[container.attr("rel")] = container;
-    container.remove();
+    sTrend = container.attr("rel");
+    //add to past trends
+    pastTrendTweets[sTrend] = container;
+    //remove from trends list (using john resig's "remove" method)
+    //idx = (trendNumFromContainer(container) - 1);
+    //trends.remove(idx);
+   
+    trendPosition = trendNumFromContainer(container)
+    
+    trends = jQuery.grep(trends, function(el, idx) {
+      //keep all of the trends that don't have the specified position
+      keep = (trendPosition != el.position);
+      if (!keep) {
+        alert("about to remove (" + idx + "): " + el.name);
+      }
+      return keep;
+    });
+    
+    
+    //remove from display
+    container.remove();   
   });
 }
 
@@ -182,4 +202,19 @@ function swapSrcRel() {
     img.attr("src", reltmp);
 }
 
+function trendNumFromContainer(container) {
+  //returns the trend number of the passed in container
+  // - the number can be found in the element ID 
+  // - element ID is in the form trend-XX, where XX is a number
+  id = $(container).attr("id");
+  num = id.replace("trend-", "");
+  //
+  return parseInt(num);
+}
 
+// Array Remove - By John Resig (MIT Licensed)
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
