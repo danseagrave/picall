@@ -153,7 +153,7 @@ function addRemoveButton(target, extraClasses) {
     
     
     //remove from display
-    container.remove();   
+    container.parent().remove();   
   });
 }
 
